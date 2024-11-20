@@ -6,7 +6,7 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class ConsumerLoginRequest {//소비자 로그인 확인 요청
+public class ConsumerLoginRequest {//소비자 로그인 여부 확인 요청
     @JsonProperty
     private String consumerName;
     @JsonProperty
