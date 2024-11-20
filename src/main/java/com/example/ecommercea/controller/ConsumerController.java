@@ -23,7 +23,7 @@ public class ConsumerController {//소비자
             try {Consumer consumer=consumerService.createConsumer(consumerRegister);
                 return ResponseEntity.status(HttpStatus.CREATED).body(consumer);
             }catch (DuplicateNameException e){
-                return ResponseEntity.status(HttpStatus.CONFLICT).body(e.getMessage());}}
+                return ResponseEntity.status(HttpStatus.CONFLICT).body(e.getMessage());}}//[3]
 
         @PostMapping("/login")
         //소비자가 로그인을 하려고 할 때, 소비자 이름, PW를 확인 한 후에 로그인
@@ -63,7 +63,7 @@ public class ConsumerController {//소비자
     try{Consumer changeConsumer=consumerService.changeConsumer(consumerID,consumerRegister);
         return ResponseEntity.ok(changeConsumer);
             }catch (Exception e){
-        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null);}}
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null);}}//[4]
 
             @DeleteMapping("/delete/{consumerID}")
             //소비자 계정을 삭제하려고 할 때, 고객 ID, PW를 확인한 후에 삭제.
@@ -74,5 +74,4 @@ public class ConsumerController {//소비자
                 return ResponseEntity.ok("소비자 계정을 성공적 으로 삭제");
             }catch (Exception e){
                 return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body
-                        ("소비자 ID 삭제 실패 또는 발견 안 됨.");}}
-}
+                        ("소비자 ID 삭제 실패 또는 발견 안 됨.");}}}//[5]
