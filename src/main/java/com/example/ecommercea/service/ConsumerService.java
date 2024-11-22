@@ -9,7 +9,6 @@ import jakarta.servlet.http.HttpSession;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-
 import java.util.Optional;
 
 @Service
@@ -17,7 +16,7 @@ import java.util.Optional;
 @RequiredArgsConstructor
 public class ConsumerService {//소비자
     private final ConsumerRepository consumerRepository;
-    public Consumer makeConsumer(ConsumerRegister consumerRegister){
+    public Consumer createConsumer(ConsumerRegister consumerRegister){
         if(consumerRepository.existsByConsumerName(consumerRegister.getConsumerName())){
             throw new DuplicateNameException("소비자 이름 이미 있음");}
         return consumerRepository.save(ConsumerRegister.consumerForm(consumerRegister));}

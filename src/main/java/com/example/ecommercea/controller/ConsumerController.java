@@ -10,7 +10,6 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.Optional;
 
 @RestController
@@ -37,7 +36,7 @@ public class ConsumerController {//소비자
         }else{return ResponseEntity
             .status(HttpStatus.UNAUTHORIZED).body("로그인 실패");}}
 
-        @PostMapping("logout")//소비자용 로그아웃
+        @PostMapping("/logout")//소비자용 로그아웃
         public ResponseEntity<String> logoutConsumer(HttpSession session) {//세션 무효화
             session.invalidate();return ResponseEntity.ok("로그아웃 성공");}
 
@@ -60,7 +59,7 @@ public class ConsumerController {//소비자
         public ResponseEntity<Consumer>changeConsumer(@PathVariable Long consumerID,
             @RequestBody ConsumerRegister consumerRegister){
 
-    try{Consumer changeConsumer=consumerService.changeConsumer(consumerID,consumerRegister);
+        try{Consumer changeConsumer=consumerService.changeConsumer(consumerID,consumerRegister);
         return ResponseEntity.ok(changeConsumer);
             }catch (Exception e){
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null);}}//[4]

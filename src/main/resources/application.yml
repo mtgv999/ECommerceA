@@ -1,19 +1,21 @@
 spring:
+  application:
+    name=ECommerceA: #[5]
   datasource:
     url: jdbc:h2:mem:test
     username: sa
     password:
     driverClassName: org.h2.Driver
-h2:
-  console:
-    enabled: true
-jpa:
-  defer-datasource-initialization: true
-  database-platform: H2
-  hibernate:
-    ddl-auto: create-drop
-  open-in-view: false
-  properties:
+  h2:
+    console:
+      enabled: true
+  jpa:
+    defer-datasource-initialization: true
+    database-platform: H2
     hibernate:
-      format_sql: true
-      show_sql: true #[2]
+      ddl-auto: create-drop
+    open-in-view: false
+    properties:
+      hibernate:
+        format_sql: true
+        show_sql: true #[2]
