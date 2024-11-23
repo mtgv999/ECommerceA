@@ -6,13 +6,13 @@ import jakarta.validation.constraints.Size;
 import lombok.*;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
-@Entity
-@Builder
-@Getter
-@Setter
+@EntityListeners(AuditingEntityListener.class)
 @NoArgsConstructor
 @AllArgsConstructor
-@EntityListeners(AuditingEntityListener.class)
+@Getter
+@Setter
+@Entity
+@Builder
 
 public class Consumer extends BaseEntity{@Id//소비자
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -30,7 +30,7 @@ public class Consumer extends BaseEntity{@Id//소비자
     private Long consumerPhoneNumber;//소비자 휴대폰 번호
     private String consumerReview;//소비자 리뷰
 
-    public void consumerChange(ConsumerRegister consumerRegister){
+    public void consumerChange(ConsumerRegister consumerRegister){//[4]
         this.consumerName=consumerRegister.getConsumerName();
         this.consumerPW=consumerRegister.getConsumerPW();
         this.consumerAccountNumber=consumerRegister.getConsumerAccountNumber();
