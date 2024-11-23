@@ -1,5 +1,5 @@
 package com.example.ecommercea.domain;
-import com.example.ecommercea.register.OrderRegister;
+import com.example.ecommercea.register.OrdersRegister;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
@@ -14,13 +14,13 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 @Entity
 @Builder
 
-public class Order extends BaseEntity{@Id//주문
+public class Orders extends BaseEntity{@Id//주문
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long ordersNumber;//주문 번호
 
     @NotNull(message = "주문 명단 작성 필수")
     @Size(min=3)
-    private String orderName;//주문 이름
+    private String ordersName;//주문 이름
     private Long customerID;//고객 ID
 
     private Long sellerID;//판매자 ID
@@ -32,15 +32,15 @@ public class Order extends BaseEntity{@Id//주문
     private Long cost;//상품 가격
     private Long productID;//상품 ID
 
-    private void ordersChange(OrderRegister orderRegister){//[4]
-        this.orderName =orderRegister.getOrderName();
-        this.customerID=orderRegister.getCustomerID();
-        this.sellerID=orderRegister.getSellerID();
+    private void ordersChange(OrdersRegister ordersRegister){//[4]
+        this.ordersName = ordersRegister.getOrdersName();
+        this.customerID= ordersRegister.getCustomerID();
+        this.sellerID= ordersRegister.getSellerID();
 
-        this.cartID=orderRegister.getCartID();
-        this.productName=orderRegister.getProductName();
-        this.ordersCount=orderRegister.getOrdersCount();
+        this.cartID= ordersRegister.getCartID();
+        this.productName= ordersRegister.getProductName();
+        this.ordersCount= ordersRegister.getOrdersCount();
 
-        this.category=orderRegister.getCategory();
-        this.cost=orderRegister.getCost();
-        this.productID=orderRegister.getProductID();}}
+        this.category= ordersRegister.getCategory();
+        this.cost= ordersRegister.getCost();
+        this.productID= ordersRegister.getProductID();}}
