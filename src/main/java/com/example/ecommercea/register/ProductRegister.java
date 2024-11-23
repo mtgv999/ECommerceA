@@ -1,11 +1,13 @@
 package com.example.ecommercea.register;
 import com.example.ecommercea.domain.Product;
 import lombok.*;
+
 @Getter
 @Setter
-@AllArgsConstructor
-@NoArgsConstructor
 @Builder
+@NoArgsConstructor
+@AllArgsConstructor
+
 public class ProductRegister {//상품용 회원등록
     private String productName;//상품 이름
     private Long sellerID;//판매자 ID

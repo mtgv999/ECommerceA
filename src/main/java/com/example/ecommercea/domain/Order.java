@@ -19,8 +19,8 @@ public class Order extends BaseEntity{@Id//주문
     private Long ordersNumber;//주문 번호
 
     @NotNull(message = "주문 명단 작성 필수")
-    @Size(min=1)
-    private String orderList;//주문 명단
+    @Size(min=3)
+    private String orderName;//주문 이름
     private Long customerID;//고객 ID
 
     private Long sellerID;//판매자 ID
@@ -32,5 +32,15 @@ public class Order extends BaseEntity{@Id//주문
     private Long cost;//상품 가격
     private Long productID;//상품 ID
 
-    private void ordersChange(OrderRegister orderRegister){
-        this.orderList=orderRegister.}}
+    private void ordersChange(OrderRegister orderRegister){//[4]
+        this.orderName =orderRegister.getOrderName();
+        this.customerID=orderRegister.getCustomerID();
+        this.sellerID=orderRegister.getSellerID();
+
+        this.cartID=orderRegister.getCartID();
+        this.productName=orderRegister.getProductName();
+        this.ordersCount=orderRegister.getOrdersCount();
+
+        this.category=orderRegister.getCategory();
+        this.cost=orderRegister.getCost();
+        this.productID=orderRegister.getProductID();}}

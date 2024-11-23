@@ -19,7 +19,7 @@ public class Product extends BaseEntity{@Id//상품
 private Long productID;//상품 ID
 
     @NotNull(message = "이름 작성 필수")
-    @Size(min=1)
+    @Size(min=3)
     private String productName;//상품 이름
     private Long sellerID;//판매자 ID
     private Long cost;//상품 가격
