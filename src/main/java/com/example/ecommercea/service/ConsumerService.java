@@ -27,7 +27,7 @@ public class ConsumerService {//소비자
                 (consumerLoginRequest.getConsumerName());
         if(consumer.getConsumerPW().equals(consumerLoginRequest.getConsumerPW())
             &&consumer.getConsumerName().equals(consumerLoginRequest.getConsumerName()))
-        {return  consumer;}return null;}
+        {return consumer;}return null;}
 
     public void logoutConsumer(HttpSession session)//소비자용 로그아웃
     {session.invalidate();}
@@ -44,7 +44,7 @@ public class ConsumerService {//소비자
                 .orElseThrow(()->new RuntimeException("소비자 없음"));
         saved.consumerChange(consumerRegister);return saved;}
 
-    public void deleteConsumer(Long consumerID, ConsumerDeleteRequest consumerDeleteRequest){
+    public void deleteSeller(Long consumerID, ConsumerDeleteRequest consumerDeleteRequest){
         Consumer consumer=consumerRepository.findById(consumerID)
                 .orElseThrow(()->new RuntimeException("소비자 없음"));
         if(consumer.getConsumerPW().equals(consumerDeleteRequest.getConsumerPW())){

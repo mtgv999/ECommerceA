@@ -69,7 +69,7 @@ public class ConsumerController {//소비자
             public ResponseEntity<String> deleteConsumer(@PathVariable Long consumerID,
             @RequestBody ConsumerDeleteRequest consumerDeleteRequest){
 
-            try {consumerService.deleteConsumer(consumerID,consumerDeleteRequest);
+            try {consumerService.deleteSeller(consumerID,consumerDeleteRequest);
                 return ResponseEntity.ok("소비자 계정을 성공적 으로 삭제");
             }catch (Exception e){
                 return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body

@@ -30,7 +30,7 @@ private Long sellerID;//판매자 아이디
     private Long sellerPhoneNumber;//판매자 휴대폰 번호
     private String sellerReview;//판매자 리뷰
 
-    public void sellChange(SellerRegister sellerRegister){//[4]
+    public void sellerChange(SellerRegister sellerRegister){//[4]
         this.sellerName=sellerRegister.getSellerName();
         this.sellerPW=sellerRegister.getSellerPW();
         this.sellerAccountNumber=sellerRegister.getSellerAccountNumber();

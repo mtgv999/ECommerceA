@@ -8,6 +8,6 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class SellerLoginRequest {//판매자 로그인 여부 확인 요쳥
     @JsonProperty
-    private Long sellerID;
+    private String sellerName;
     @JsonProperty
     private String sellerPW;}

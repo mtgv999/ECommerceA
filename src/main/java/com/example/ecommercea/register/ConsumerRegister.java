@@ -3,9 +3,10 @@ import com.example.ecommercea.domain.Consumer;
 import lombok.*;
 @Getter
 @Setter
+@Builder
 @AllArgsConstructor
 @NoArgsConstructor
-@Builder
+
 public class ConsumerRegister {//소비자용 회원등록
 
     private String consumerName;
