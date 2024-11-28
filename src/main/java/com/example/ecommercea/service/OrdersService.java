@@ -2,7 +2,6 @@ package com.example.ecommercea.service;
 import com.example.ecommercea.DuplicateNameException;
 import com.example.ecommercea.domain.Orders;
 import com.example.ecommercea.register.OrdersRegister;
-
 import com.example.ecommercea.repository.OrdersRepository;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
@@ -11,7 +10,7 @@ import org.springframework.stereotype.Service;
 @Service
 @Transactional
 @RequiredArgsConstructor
-public class OrdersService {//주문
+public class OrdersService {
     private final OrdersRepository ordersRepository;
 
     public Orders createOrders(OrdersRegister ordersRegister){
@@ -28,5 +27,4 @@ public class OrdersService {//주문
         saved.ordersChange(ordersRegister);return saved;}//[4]
 
     public void deleteOrders(Long ordersID){
-        ordersRepository.deleteByOrdersNumber(ordersID);}
-}
+        ordersRepository.deleteByOrdersNumber(ordersID);}}
