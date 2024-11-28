@@ -32,7 +32,7 @@ public class Orders extends BaseEntity{@Id//주문
     private Long cost;//상품 가격
     private Long productID;//상품 ID
 
-    private void ordersChange(OrdersRegister ordersRegister){//[4]
+    public void ordersChange(OrdersRegister ordersRegister){//[4]
         this.ordersName = ordersRegister.getOrdersName();
         this.customerID= ordersRegister.getCustomerID();
         this.sellerID= ordersRegister.getSellerID();

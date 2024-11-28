@@ -25,5 +25,4 @@ public class ProductRegister {//상품용 회원등록
                 .category(productRegister.getCategory())
                 .information(productRegister.getInformation())
                 .productNumber(productRegister.getProductNumber())
-                .stock(productRegister.getStock()).build();
-    }}
+                .stock(productRegister.getStock()).build();}}

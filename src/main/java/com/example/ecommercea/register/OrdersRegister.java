@@ -21,7 +21,7 @@ public class OrdersRegister {//주문 등록
     private Long cost;//상품 가격
     private Long productID;//상품 ID
 
-    public static Orders changeForm(OrdersRegister ordersRegister){
+    public static Orders ordersForm(OrdersRegister ordersRegister){
         return Orders.builder().ordersName(ordersRegister.getOrdersName())
                 .customerID(ordersRegister.getCustomerID())
                 .sellerID(ordersRegister.getSellerID())

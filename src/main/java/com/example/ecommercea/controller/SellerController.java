@@ -58,7 +58,7 @@ public class SellerController {
             if(seller!=null){return ResponseEntity.ok(seller);
             }else{return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);}}
 
-        @PutMapping("/update/{sellerID}")//소비자 정보 수정
+        @PutMapping("/change/{sellerID}")//소비자 정보 수정
         public ResponseEntity<Seller> changeSeller(@PathVariable Long sellerID,
                                                      @RequestBody SellerRegister sellerRegister){
 

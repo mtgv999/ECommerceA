@@ -55,7 +55,7 @@ public class ConsumerController {//소비자
             if(consumer!=null){return ResponseEntity.ok(consumer);
         }else{return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);}}
 
-        @PutMapping("/update/{consumerID}")//소비자 정보 수정
+        @PutMapping("/change/{consumerID}")//소비자 정보 수정
         public ResponseEntity<Consumer>changeConsumer(@PathVariable Long consumerID,
             @RequestBody ConsumerRegister consumerRegister){
 
