@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
 @Service
 @Transactional
 @RequiredArgsConstructor
-public class OrdersService {
+public class OrdersService {//주문
     private final OrdersRepository ordersRepository;
 
     public Orders createOrders(OrdersRegister ordersRegister){

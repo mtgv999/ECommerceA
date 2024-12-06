@@ -8,6 +8,6 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class ConsumerDeleteRequest {//소비자 계정 삭제 요청
     @JsonProperty
-    private Long consumerID;
+    private Long consumerID;//소비자 ID
     @JsonProperty
-    private String consumerPW;}
+    private String consumerPW;}//소비자 PW

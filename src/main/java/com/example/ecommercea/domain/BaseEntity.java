@@ -10,7 +10,7 @@ import java.time.LocalDateTime;
 @MappedSuperclass
 @EntityListeners(value ={AuditingEntityListener.class})
 public class BaseEntity{
-    @CreatedDate
+    @CreatedDate//만든 시간
     private LocalDateTime createdTime=LocalDateTime.now();
-    @LastModifiedDate
+    @LastModifiedDate//업데이트한 시간
     private LocalDateTime updatedTime=LocalDateTime.now();}

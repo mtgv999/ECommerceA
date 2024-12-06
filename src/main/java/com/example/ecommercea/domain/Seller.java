@@ -23,7 +23,7 @@ private Long sellerID;//판매자 아이디
     private String sellerName;//판매자 이름
 
     @NotNull(message = "PW 작성 필수")
-    @Size(min=5)
+    @Size(min=8)
     private String sellerPW;//판매자 비밀 번호
 
     private Long sellerAccountNumber;//판매자 계좌 번호

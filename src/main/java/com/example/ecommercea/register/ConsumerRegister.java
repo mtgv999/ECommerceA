@@ -8,12 +8,11 @@ import lombok.*;
 @NoArgsConstructor
 
 public class ConsumerRegister {//소비자용 회원등록
-
-    private String consumerName;
-    private String consumerPW;
-    private Long consumerAccountNumber;
-    private Long consumerPhoneNumber;
-    private String consumerReview;
+    private String consumerName;//소비자 이름
+    private String consumerPW;//소비자 비밀번호
+    private Long consumerAccountNumber;//소비자 계좌번호
+    private Long consumerPhoneNumber;//소비자 전화번호
+    private String consumerReview;//소비자 리뷰
 
     public static Consumer consumerForm(ConsumerRegister consumerRegister){
         return Consumer.builder().consumerName(consumerRegister.getConsumerName())

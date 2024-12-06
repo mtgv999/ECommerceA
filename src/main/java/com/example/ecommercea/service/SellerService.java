@@ -15,7 +15,7 @@ import java.util.Optional;
 @Service
 @Transactional
 @RequiredArgsConstructor
-public class SellerService {
+public class SellerService {//판매자
     private final SellerRepository sellerRepository;
     public Seller createSeller(SellerRegister sellerRegister){
         if(sellerRepository.existsBySellerName(sellerRegister.getSellerName())){
@@ -23,14 +23,14 @@ public class SellerService {
         return sellerRepository.save(SellerRegister.sellerForm(sellerRegister));}
 
     public Seller authenticateSeller(SellerLoginRequest sellerLoginRequest){
-        //소비자 인증 - 소비자가 로그인을 하려고 할 때, 소비자 이름, PW 확인한 후에 로그인
+        //판매자 인증 - 소비자가 로그인을 하려고 할 때, 소비자 이름, PW 확인한 후에 로그인
         Seller seller= sellerRepository.findBySellerName
                 (sellerLoginRequest.getSellerName());
         if(seller.getSellerPW().equals(sellerLoginRequest.getSellerPW())
                 &&seller.getSellerName().equals(sellerLoginRequest.getSellerName()))
         {return seller;}return null;}
 
-    public void logoutSeller(HttpSession session)//소비자용 로그아웃
+    public void logoutSeller(HttpSession session)//판매자용 로그아웃
     {session.invalidate();}
 
     public Optional<Seller> findBySellerID(Long sellerID){

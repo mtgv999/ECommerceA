@@ -1,5 +1,4 @@
 package com.example.ecommercea.controller;
-
 import com.example.ecommercea.DuplicateNameException;
 import com.example.ecommercea.domain.Seller;
 import com.example.ecommercea.register.SellerRegister;
@@ -17,10 +16,10 @@ import java.util.Optional;
 @RestController
 @RequestMapping("/seller")
 @RequiredArgsConstructor
-public class SellerController {
+public class SellerController {//판매자
     private final SellerService sellerService;
 
-        @PostMapping("/create")
+        @PostMapping("/create")//판매자 회원가입
         public ResponseEntity<?> createSeller(@RequestBody SellerRegister sellerRegister){
             try {Seller seller= sellerService.createSeller(sellerRegister);
                 return ResponseEntity.status(HttpStatus.CREATED).body(seller);
@@ -58,9 +57,9 @@ public class SellerController {
             if(seller!=null){return ResponseEntity.ok(seller);
             }else{return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);}}
 
-        @PutMapping("/change/{sellerID}")//소비자 정보 수정
+        @PutMapping("/change/{sellerID}")//판매자 정보 수정
         public ResponseEntity<Seller> changeSeller(@PathVariable Long sellerID,
-                                                     @RequestBody SellerRegister sellerRegister){
+                                     @RequestBody SellerRegister sellerRegister){
 
             try{Seller changeSeller= sellerService.changeSeller(sellerID,sellerRegister);
                 return ResponseEntity.ok(changeSeller);
@@ -68,7 +67,7 @@ public class SellerController {
                 return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null);}}//[4]
 
         @DeleteMapping("/delete/{sellerID}")
-        //소비자 계정을 삭제하려고 할 때, 고객 ID, PW를 확인한 후에 삭제.
+        //판매자 계정을 삭제하려고 할 때, 고객 ID, PW를 확인한 후에 삭제.
         public ResponseEntity<String> deleteSeller(@PathVariable Long sellerID,
     @RequestBody SellerDeleteRequest sellerDeleteRequest){
 

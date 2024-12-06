@@ -17,7 +17,7 @@ import java.util.Optional;
 @RequiredArgsConstructor
 public class ConsumerController {//소비자
     private final ConsumerService consumerService;
-        @PostMapping("/create")
+        @PostMapping("/create")//소비자 회원가입
         public ResponseEntity<?> createConsumer(@RequestBody ConsumerRegister consumerRegister){
             try {Consumer consumer=consumerService.createConsumer(consumerRegister);
                 return ResponseEntity.status(HttpStatus.CREATED).body(consumer);

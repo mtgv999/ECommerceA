@@ -11,7 +11,7 @@ import org.springframework.stereotype.Service;
 @Service
 @Transactional
 @RequiredArgsConstructor
-public class CartService {
+public class CartService {//장바구니
     private final CartRepository cartRepository;
 
     public Cart createCart(CartRegister cartRegister){

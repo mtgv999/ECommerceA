@@ -23,7 +23,7 @@ public class Consumer extends BaseEntity{@Id//소비자
     private String consumerName;//소비자 이름
 
     @NotNull(message = "PW 작성 필수")
-    @Size(min=5)
+    @Size(min=8)
     private String consumerPW;//소비자 비밀 번호
 
     private Long consumerAccountNumber;//소비자 계좌 번호

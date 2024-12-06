@@ -8,7 +8,7 @@ import lombok.*;
 @NoArgsConstructor
 @AllArgsConstructor
 
-public class CartRegister {
+public class CartRegister {//장바구니 등록
     private String cartName;//장바구니 이름
     private String productName;//상품 이름
 
@@ -18,7 +18,7 @@ public class CartRegister {
 
     private Long totalCost;//가격 총합
     private Long cartNumber;//장바구니 번호
-    private Long productID;//상품 아이디
+    private Long productID;//상품 ID
 
     public static Cart cartForm(CartRegister cartRegister){
         return Cart.builder().cartName(cartRegister.getCartName())
