@@ -45,6 +45,7 @@ ordersItems.remove(ordersItem);ordersItem.setOrders(null);}
     public void ordersChange(OrdersRegister ordersRegister){//주문 내역 수정 메서드
         this.ordersName = ordersRegister.getOrdersName();
         this.consumer= ordersRegister.getConsumer();
+        this.consumerID=ordersRegister.getConsumerID();
         this.cartID= ordersRegister.getCartID();
 
         this.ordersItems.clear();//기존 주문 항목 삭제
@@ -54,7 +55,10 @@ ordersItems.remove(ordersItem);ordersItem.setOrders(null);}
         ordersItem.setConsumerID(itemRegister.getConsumerID());
         ordersItem.setProductID(itemRegister.getProductID());
         ordersItem.setProductName(itemRegister.getProductName());
+
         ordersItem.setSellerID(itemRegister.getSellerID());
         ordersItem.setOrdersCount(itemRegister.getOrdersCount());
         ordersItem.setCost(itemRegister.getCost());
-        ordersItem.setCategory(itemRegister.getCategory());}}}//[6]~[18]
+        ordersItem.setCategory(itemRegister.getCategory());
+        ordersItem.setOrders(this);
+        this.ordersItems.add(ordersItem);}}}//[6]~[18] 주로 [8]

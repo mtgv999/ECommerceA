@@ -22,9 +22,6 @@ public class Cart extends BaseEntity{@Id//장바구니
     @NotNull(message = "장바구니 이름 작성 필수")
     @Size(min=3)
     private String cartName;//장바구니 이름
-
-    @NotNull(message = "상품 이름 작성 필수")
-    @Size(min=3)
     private String productName;//상품 이름
 
     private Long sellerID;//판매자

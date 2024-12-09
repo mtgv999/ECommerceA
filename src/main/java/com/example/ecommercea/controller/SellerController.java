@@ -69,7 +69,7 @@ public class SellerController {//판매자
         @DeleteMapping("/delete/{sellerID}")
         //판매자 계정을 삭제하려고 할 때, 고객 ID, PW를 확인한 후에 삭제.
         public ResponseEntity<String> deleteSeller(@PathVariable Long sellerID,
-    @RequestBody SellerDeleteRequest sellerDeleteRequest){
+        @RequestBody SellerDeleteRequest sellerDeleteRequest){
 
             try {sellerService.deleteSeller(sellerID,sellerDeleteRequest);
                 return ResponseEntity.ok("소비자 계정을 성공적 으로 삭제");

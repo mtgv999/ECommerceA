@@ -15,7 +15,7 @@ public class OrdersItem extends BaseEntity{ @Id
 @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long ordersItemID;//상품 주문 ID
 
-    private Long consumerID;
+    private Long consumerID;//소비자 ID
     private Long productID;//상품 ID
     private String productName;//상품 이름
     private Long sellerID;//판매자 ID
