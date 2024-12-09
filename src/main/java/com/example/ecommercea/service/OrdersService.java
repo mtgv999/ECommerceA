@@ -19,7 +19,11 @@ public class OrdersService {//주문
         return ordersRepository.save(OrdersRegister.ordersForm(ordersRegister));}//[3]
 
     public Orders getOrders(Long ordersID){
-        return ordersRepository.findById(ordersID).orElse(null);}
+        return ordersRepository.findOrdersWithItems(ordersID).orElse(null);}
+
+    /* public Orders getOrdersDetails(Long ordersNumber){
+        return ordersRepository.findByIdWithConsumer(ordersNumber).
+                orElseThrow(()->new RuntimeException("주문 없음"));}*/
 
     public Orders changeOrders(Long ordersID, OrdersRegister ordersRegister){
         Orders saved= ordersRepository.findById(ordersID)

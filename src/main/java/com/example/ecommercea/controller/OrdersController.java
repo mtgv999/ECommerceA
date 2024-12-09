@@ -25,7 +25,17 @@ public class OrdersController {//주문
     public ResponseEntity<Orders>getOrders(@PathVariable Long ordersNumber){
         Orders orders= ordersService.getOrders(ordersNumber);
         if(orders!=null){return ResponseEntity.ok(orders);
-        }else{return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);}}
+        }else{return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);}}//[20]~[24]
+
+    /* @GetMapping("/{ordersNumber}")
+    public ResponseEntity<?>getOrdersDetails(@PathVariable Long ordersNumber){
+        Orders orders=ordersService.getOrdersDetails(ordersNumber);
+        Map<String,Object> response=new HashMap<>();
+
+        response.put("consumerName",orders.getConsumer().getConsumerName());
+        response.put("ordersName",orders.getOrdersName());
+        response.put("items",orders.getOrdersItems());
+        return ResponseEntity.ok(response);}//[19]*/
 
     @PutMapping("/change/{ordersNumber}")//주문 정보 수정
     public ResponseEntity<Orders>changeOrders(@PathVariable Long ordersNumber,

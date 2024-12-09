@@ -1,6 +1,11 @@
 package com.example.ecommercea.register;
+import com.example.ecommercea.domain.Consumer;
 import com.example.ecommercea.domain.Orders;
+import com.example.ecommercea.domain.OrdersItem;
 import lombok.*;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Getter
 @Setter
@@ -10,26 +15,19 @@ import lombok.*;
 
 public class OrdersRegister {//주문 등록
     private String ordersName;//주문 이름
-    private Long customerID;//고객 ID
-    private Long sellerID;//판매자 ID
-
+    private Long consumerID;//고객 ID
+    private Consumer consumer;//고객
     private Long cartID;//장바구니 ID
-    private String productName;//상품 이름
-    private int ordersCount;//주문한 상품 개수
 
-    private String category;//분류
-    private Long cost;//상품 가격
-    private Long productID;//상품 ID
+    private List<OrdersItem> ordersItems;//주문 상품 리스트
 
     public static Orders ordersForm(OrdersRegister ordersRegister){
-        return Orders.builder().ordersName(ordersRegister.getOrdersName())
-                .customerID(ordersRegister.getCustomerID())
-                .sellerID(ordersRegister.getSellerID())
+        Orders orders= Orders.builder().ordersName(ordersRegister.getOrdersName())
+                .consumer(ordersRegister.getConsumer())
+                .consumerID(ordersRegister.getConsumerID())
+                .cartID(ordersRegister.getCartID()).build();
 
-                .cartID(ordersRegister.getCartID())
-                .productName(ordersRegister.getProductName())
-                .ordersCount(ordersRegister.getOrdersCount())
-
-                .category(ordersRegister.getCategory())
-                .cost(ordersRegister.getCost())
-                .productID(ordersRegister.getProductID()).build();}}
+        List<OrdersItem>ordersItems=new ArrayList<>();
+        for(OrdersItem item: ordersRegister.getOrdersItems()){
+            item.setOrders(orders);}//주문에다 아이템 연결
+ orders.setOrdersItems(ordersRegister.getOrdersItems()); return orders;}}//[6]~[18]

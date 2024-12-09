@@ -6,6 +6,9 @@ import jakarta.validation.constraints.Size;
 import lombok.*;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @EntityListeners(AuditingEntityListener.class)
 @NoArgsConstructor
 @AllArgsConstructor
@@ -21,26 +24,37 @@ public class Orders extends BaseEntity{@Id//주문
     @NotNull(message = "주문 명단 작성 필수")
     @Size(min=3)
     private String ordersName;//주문 이름
-    private Long customerID;//고객 ID
 
-    private Long sellerID;//판매자 ID
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "consumer")
+    private Consumer consumer;//고객 정보
+
+    private Long consumerID;//고객 ID
     private Long cartID;//장바구니 ID
-    private String productName;//상품 이름
 
-    private int ordersCount;//주문한 상품 개수
-    private String category;//분류
-    private Long cost;//상품 가격
-    private Long productID;//상품 ID
+    @OneToMany(mappedBy = "orders",cascade =
+            CascadeType.ALL, orphanRemoval = true)//주문한 상품 리스트
+    private List<OrdersItem>ordersItems=new ArrayList<>();
 
-    public void ordersChange(OrdersRegister ordersRegister){//[4]
+    public void addOrderItem(OrdersItem ordersItem) {//주문 내역 추가 메서드
+ ordersItems.add(ordersItem);ordersItem.setOrders(this);}
+
+    public void removeOrderItem(OrdersItem ordersItem){//주문 내역 삭제 메서드
+ordersItems.remove(ordersItem);ordersItem.setOrders(null);}
+
+    public void ordersChange(OrdersRegister ordersRegister){//주문 내역 수정 메서드
         this.ordersName = ordersRegister.getOrdersName();
-        this.customerID= ordersRegister.getCustomerID();
-        this.sellerID= ordersRegister.getSellerID();
-
+        this.consumer= ordersRegister.getConsumer();
         this.cartID= ordersRegister.getCartID();
-        this.productName= ordersRegister.getProductName();
-        this.ordersCount= ordersRegister.getOrdersCount();
 
-        this.category= ordersRegister.getCategory();
-        this.cost= ordersRegister.getCost();
-        this.productID= ordersRegister.getProductID();}}
+        this.ordersItems.clear();//기존 주문 항목 삭제
+
+    for(OrdersItem itemRegister:ordersRegister.getOrdersItems()){
+        OrdersItem ordersItem=new OrdersItem();
+        ordersItem.setConsumerID(itemRegister.getConsumerID());
+        ordersItem.setProductID(itemRegister.getProductID());
+        ordersItem.setProductName(itemRegister.getProductName());
+        ordersItem.setSellerID(itemRegister.getSellerID());
+        ordersItem.setOrdersCount(itemRegister.getOrdersCount());
+        ordersItem.setCost(itemRegister.getCost());
+        ordersItem.setCategory(itemRegister.getCategory());}}}//[6]~[18]
