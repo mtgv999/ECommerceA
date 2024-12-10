@@ -33,7 +33,7 @@ public class Orders extends BaseEntity{@Id//주문
     private Long cartID;//장바구니 ID
 
     @OneToMany(mappedBy = "orders",cascade =
-            CascadeType.ALL, orphanRemoval = true)//주문한 상품 리스트
+    CascadeType.ALL, orphanRemoval = true)//주문한 상품 리스트
     private List<OrdersItem>ordersItems=new ArrayList<>();
 
     public void addOrderItem(OrdersItem ordersItem) {//주문 내역 추가 메서드

@@ -129,3 +129,27 @@ https://chatgpt.com/c/67544a7c-5ecc-8006-ab3d-aa378910c64b, 2024.12.07, https://
 > >C:\Users\OWNER\IdeaProjects\ECommerceA2\.idea\httpRequests\http-client.cookies 처럼 안 보입니다.
 > 어떻게 해야 조회 결과를 볼 수 있나요?",
 https://chatgpt.com/c/67544a7c-5ecc-8006-ab3d-aa378910c64b, 2024.12.07, https://chatgpt.com/
+
+[25] chatgpt, response to "{"customerName": "John Doe", "orderName": "Electronics Order", "items":
+[{"ordersItemID": 1}와 같은 결과가 나오려면 맨 위 코드에 기반한 http 요청에서 어떤 변수에 어떤 값을 대입해야 됩니까?
+~"productID": 101, "productName": "Smartphone", "sellerID": 201, "ordersCount": 2,"cost": 500,
+"category": "Electronics"}, {"ordersItemID": 2, "productID": 102, "productName": "Laptop", "sellerID": 202,
+"ordersCount": 1, "cost": 1500,"category": "Electronics"}]}",
+https://chatgpt.com/c/6753ea12-1188-8006-9a14-c72ebcfdfa6e, 2024.12.05~07 사이, https://chatgpt.com/
+
+[26] chatgpt, response to "제가 원한 결과는 주문번호를 통해 누가 어떤 주문을 했는지 그 결과를 가져오는 것입니다.
+위의 createOrder를 getOrdersDetail로 바꿀 때 코드가 달라지나요? 그 전제하에  {"ordersName": "Electronics Order",
+// orderName에 해당 "consumer": {"name": "John Doe" // customerName에 해당 },"ordersItems": [{"ordersItemID": 1,
+"productID": 101, "productName": "Smartphone", "sellerID": 201, "ordersCount": 2, "cost": 500, 
+"category": "Electronics"}, {"ordersItemID": 2, "productID": 102, "productName": "Laptop", "sellerID": 202,
+"ordersCount": 1, "cost": 1500, "category": "Electronics"}]}의 결과를 조회하고 싶습니다.",
+https://chatgpt.com/c/6753ea12-1188-8006-9a14-c72ebcfdfa6e, 2024.12.05~07 사이, https://chatgpt.com/
+
+[27] chatgpt, "그럼 위에 http 요청에서 어떤 변수에 어떤 값을 대입해야 되나요?",
+https://chatgpt.com/c/6753ea12-1188-8006-9a14-c72ebcfdfa6e, 2024.12.05~07 사이, https://chatgpt.com/
+
+[28] chatgpt, response to "{"ordersName": "1230", "consumerID": 12, "cartID": 0, "ordersItems":
+[{"consumerID": 12, "productID": 12, "productName": "13", ~ }의 내용을 수정하려고 하는데 어떻게 해야
+Service, Controller, Orders, OrdersItem, Repository 등의 클래스를 어떻게 바꿔야 가능합니까?
+private Orders orders;}//[6]을 바탕으로 누가 어떤 주문을 했는 지 알 수 있으려면 코드를 어떻게 짜야 됩니까?",
+https://chatgpt.com/c/6753ea12-1188-8006-9a14-c72ebcfdfa6e, 2024.12.05~07 사이, https://chatgpt.com/

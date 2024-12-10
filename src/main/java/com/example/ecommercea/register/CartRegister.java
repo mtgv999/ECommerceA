@@ -13,7 +13,7 @@ public class CartRegister {//장바구니 등록
     private String productName;//상품 이름
 
     private Long sellerID;//판매자
-    private Long customerID;//고객
+    private Long consumerID;//고객
     private int cartStock;//장바구니 내 상품의 총 개수
 
     private Long totalCost;//가격 총합
@@ -25,7 +25,7 @@ public class CartRegister {//장바구니 등록
                 .productName(cartRegister.getProductName())
 
                 .sellerID(cartRegister.getSellerID())
-                .customerID(cartRegister.getCustomerID())
+                .consumerID(cartRegister.getConsumerID())
                 .cartStock(cartRegister.getCartStock())
 
                 .totalCost(cartRegister.getTotalCost())

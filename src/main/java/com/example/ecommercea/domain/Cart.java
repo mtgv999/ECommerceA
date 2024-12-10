@@ -25,7 +25,7 @@ public class Cart extends BaseEntity{@Id//장바구니
     private String productName;//상품 이름
 
     private Long sellerID;//판매자
-    private Long customerID;//고객
+    private Long consumerID;//고객
     private int cartStock;//장바구니 내 상품의 총 개수
 
     private Long totalCost;//가격 총합
@@ -37,7 +37,7 @@ public class Cart extends BaseEntity{@Id//장바구니
         this.productName=cartRegister.getProductName();
 
         this.sellerID=cartRegister.getSellerID();
-        this.customerID=cartRegister.getCustomerID();
+        this.consumerID =cartRegister.getConsumerID();
         this.cartStock=cartRegister.getCartStock();
 
         this.totalCost=cartRegister.getTotalCost();

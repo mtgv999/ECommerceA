@@ -9,7 +9,7 @@ import java.util.Optional;
 @Repository
 public interface OrdersRepository extends JpaRepository<Orders, Long> {//주문
     @Query("select o from Orders o JOIN FETCH o.consumer " +
-            "where o.ordersNumber=:ordersNumber")
+"c JOIN FETCH o.ordersItems i where o.ordersNumber = :ordersNumber")
     Optional<Orders> findByIdWithConsumer(@Param("ordersNumber") Long ordersNumber);
 
     @Query("SELECT o FROM Orders o JOIN FETCH o.ordersItems WHERE o.ordersNumber = :ordersNumber")
