@@ -10,4 +10,6 @@ public class ConsumerDeleteRequest {//소비자 계정 삭제 요청
     @JsonProperty
     private Long consumerID;//소비자 ID
     @JsonProperty
-    private String consumerPW;}//소비자 PW
+    private String consumerName;//소비자 이름
+    @JsonProperty
+    private String consumerPW;}//소비자 PW [38]

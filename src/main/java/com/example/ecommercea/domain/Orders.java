@@ -61,4 +61,4 @@ ordersItems.remove(ordersItem);ordersItem.setOrders(null);}
         ordersItem.setCost(itemRegister.getCost());
         ordersItem.setCategory(itemRegister.getCategory());
         ordersItem.setOrders(this);
-        this.ordersItems.add(ordersItem);}}}//[6]~[18] 주로 [8]
+        this.ordersItems.add(ordersItem);}}}//[6]~[18] 주로 [8], [28]

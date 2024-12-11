@@ -7,7 +7,6 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.HashMap;
 import java.util.Map;
 
@@ -30,10 +29,10 @@ public class OrdersController {//주문
         if(orders!=null){return ResponseEntity.ok(orders);
         }else{return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);}}//[20]~[24]
 
-    @GetMapping("/{ordersNumber}")
+    @GetMapping("/{ordersNumber}")//주문번호을 통해 주문한 소비자와 주문 내용 찾기
     public ResponseEntity<?>getOrdersDetails(@PathVariable Long ordersNumber){
         Map<String,Object> ordersDetails = new HashMap<>();
-        return ResponseEntity.ok(ordersDetails);}//[19]
+        return ResponseEntity.ok(ordersDetails);}//[19]~[27]
 
     @PutMapping("/change/{ordersNumber}")//주문 정보 수정
     public ResponseEntity<Orders>changeOrders(@PathVariable Long ordersNumber,

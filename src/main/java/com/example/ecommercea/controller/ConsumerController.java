@@ -17,7 +17,8 @@ import java.util.Optional;
 @RequiredArgsConstructor
 public class ConsumerController {//소비자
     private final ConsumerService consumerService;
-        @PostMapping("/create")//소비자 회원가입
+
+    @PostMapping("/create")//소비자 회원가입
         public ResponseEntity<?> createConsumer(@RequestBody ConsumerRegister consumerRegister){
             try {Consumer consumer=consumerService.createConsumer(consumerRegister);
                 return ResponseEntity.status(HttpStatus.CREATED).body(consumer);
@@ -55,22 +56,25 @@ public class ConsumerController {//소비자
             if(consumer!=null){return ResponseEntity.ok(consumer);
         }else{return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);}}
 
-        @PutMapping("/change/{consumerID}")//소비자 정보 수정
-        public ResponseEntity<Consumer>changeConsumer(@PathVariable Long consumerID,
-            @RequestBody ConsumerRegister consumerRegister){
+    @PutMapping("/change/{consumerID}")//소비자 정보 수정
+    public ResponseEntity<?>changeConsumer(@PathVariable Long consumerID,
+    @RequestBody ConsumerRegister consumerRegister){
 
         try{Consumer changeConsumer=consumerService.changeConsumer(consumerID,consumerRegister);
-        return ResponseEntity.ok(changeConsumer);
-            }catch (Exception e){
-        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null);}}//[4]
+            return ResponseEntity.ok(changeConsumer);
+        }catch (DuplicateNameException e){
+            return ResponseEntity.status(HttpStatus.CONFLICT).body(e.getMessage());
+        }catch (Exception e){
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body
+                    ("잘못된 요청"+e.getMessage());}}//[4][31][32][33][34]
 
             @DeleteMapping("/delete/{consumerID}")
-            //소비자 계정을 삭제하려고 할 때, 고객 ID, PW를 확인한 후에 삭제.
+            //소비자 계정을 삭제하려고 할 때, 고객 ID, PW를 확인한 후에 삭제. http에서 2개의 sellerID 값 맞춰주기.
             public ResponseEntity<String> deleteConsumer(@PathVariable Long consumerID,
             @RequestBody ConsumerDeleteRequest consumerDeleteRequest){
 
-            try {consumerService.deleteSeller(consumerID,consumerDeleteRequest);
+            try {consumerService.deleteConsumer(consumerID,consumerDeleteRequest);
                 return ResponseEntity.ok("소비자 계정을 성공적 으로 삭제");
             }catch (Exception e){
                 return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body
-                        ("소비자 ID 삭제 실패 또는 발견 안 됨.");}}}//[5]
+                        ("소비자 ID 삭제 실패 또는 발견 안 됨.");}}}//[5][36][37][38]

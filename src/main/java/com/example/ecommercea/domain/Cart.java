@@ -1,5 +1,4 @@
 package com.example.ecommercea.domain;
-
 import com.example.ecommercea.register.CartRegister;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;

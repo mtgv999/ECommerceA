@@ -57,22 +57,25 @@ public class SellerController {//판매자
             if(seller!=null){return ResponseEntity.ok(seller);
             }else{return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);}}
 
-        @PutMapping("/change/{sellerID}")//판매자 정보 수정
-        public ResponseEntity<Seller> changeSeller(@PathVariable Long sellerID,
+            @PutMapping("/change/{sellerID}")//판매자 정보 수정
+            public ResponseEntity<?> changeSeller(@PathVariable Long sellerID,
                                      @RequestBody SellerRegister sellerRegister){
 
-            try{Seller changeSeller= sellerService.changeSeller(sellerID,sellerRegister);
+            try {Seller changeSeller = sellerService.changeSeller(sellerID, sellerRegister);
                 return ResponseEntity.ok(changeSeller);
+            }catch (DuplicateNameException e){
+                return ResponseEntity.status(HttpStatus.CONFLICT).body(e.getMessage());
             }catch (Exception e){
-                return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null);}}//[4]
+                return ResponseEntity.status(HttpStatus.BAD_REQUEST).body
+                        ("잘못된 요청"+e.getMessage());}}//[4][31][32][33][34]
 
         @DeleteMapping("/delete/{sellerID}")
-        //판매자 계정을 삭제하려고 할 때, 고객 ID, PW를 확인한 후에 삭제.
+        //판매자 계정을 삭제하려고 할 때, 고객 ID, PW를 확인한 후에 삭제. http에서 2개의 sellerID 값 맞춰주기.
         public ResponseEntity<String> deleteSeller(@PathVariable Long sellerID,
         @RequestBody SellerDeleteRequest sellerDeleteRequest){
 
             try {sellerService.deleteSeller(sellerID,sellerDeleteRequest);
-                return ResponseEntity.ok("소비자 계정을 성공적 으로 삭제");
+                return ResponseEntity.ok("판매자 계정을 성공적 으로 삭제");
             }catch (Exception e){
                 return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body
-                        ("소비자 ID 삭제 실패 또는 발견 안 됨.");}}}//[5]*/
+                        ("판매자 ID 삭제 실패 또는 발견 안 됨.");}}}//[5][36][37][38]

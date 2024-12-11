@@ -35,4 +35,4 @@ public class Consumer extends BaseEntity{@Id//소비자
         this.consumerPW=consumerRegister.getConsumerPW();
         this.consumerAccountNumber=consumerRegister.getConsumerAccountNumber();
         this.consumerPhoneNumber=consumerRegister.getConsumerPhoneNumber();
-        this.consumerReview=consumerRegister.getConsumerReview();}}//[3]
+        this.consumerReview=consumerRegister.getConsumerReview();}}//[3][36][37]

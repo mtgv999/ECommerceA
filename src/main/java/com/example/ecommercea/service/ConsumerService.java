@@ -25,6 +25,7 @@ public class ConsumerService {//소비자
         //소비자 인증 - 소비자가 로그인을 하려고 할 때, 소비자 이름, PW 확인한 후에 로그인
         Consumer consumer=consumerRepository.findByConsumerName
                 (consumerLoginRequest.getConsumerName());
+
         if(consumer.getConsumerPW().equals(consumerLoginRequest.getConsumerPW())
             &&consumer.getConsumerName().equals(consumerLoginRequest.getConsumerName()))
         {return consumer;}return null;}
@@ -42,11 +43,16 @@ public class ConsumerService {//소비자
     public Consumer changeConsumer(Long consumerID, ConsumerRegister consumerRegister){
         Consumer saved=consumerRepository.findById(consumerID)
                 .orElseThrow(()->new RuntimeException("소비자 없음"));
-        saved.consumerChange(consumerRegister);return saved;}
 
-    public void deleteSeller(Long consumerID, ConsumerDeleteRequest consumerDeleteRequest){
+        if(consumerRepository.existsByConsumerName(consumerRegister.getConsumerName())){
+            throw new DuplicateNameException("소비자 이름 이미 있음");}
+        saved.consumerChange(consumerRegister);return consumerRepository.save(saved);}//[4][31][32][33][34]
+
+    public void deleteConsumer(Long consumerID, ConsumerDeleteRequest consumerDeleteRequest){
         Consumer consumer=consumerRepository.findById(consumerID)
                 .orElseThrow(()->new RuntimeException("소비자 없음"));
-        if(consumer.getConsumerPW().equals(consumerDeleteRequest.getConsumerPW())){
+
+        if(consumer.getConsumerPW().equals(consumerDeleteRequest.getConsumerPW())&&
+        consumer.getConsumerName().equals(consumerDeleteRequest.getConsumerName())){
             consumerRepository.deleteById(consumerID);}
-        else throw new RuntimeException("소비자 ID 삭제 실패 또는 발견 안 됨");}}
+        else throw new RuntimeException("소비자 ID 삭제 실패 또는 발견 안 됨");}}//[5][36][37][38]

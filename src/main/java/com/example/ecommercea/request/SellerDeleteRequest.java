@@ -10,4 +10,6 @@ public class SellerDeleteRequest {//판매자 계정 삭제 요청
     @JsonProperty
     private Long sellerID;//판매자 ID
     @JsonProperty
-    private String sellerPW;}//판매자 비밀번호
+    private  String sellerName;//판매자 이름
+    @JsonProperty
+    private String sellerPW;}//판매자 비밀번호 [38]

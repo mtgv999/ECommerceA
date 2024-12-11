@@ -24,7 +24,7 @@ public class OrdersService {//주문
         return ordersRepository.save(OrdersRegister.ordersForm(ordersRegister));}//[3]
 
     public Orders getOrders(Long ordersID){
-        return ordersRepository.findOrdersWithItems(ordersID).orElse(null);}
+        return ordersRepository.findOrdersWithItems(ordersID).orElse(null);}//[20]~[24]
 
     public Map<String,Object> getOrdersDetails(Long ordersNumber){
         Orders orders=ordersRepository.findByIdWithConsumer(ordersNumber).
@@ -48,7 +48,7 @@ public class OrdersService {//주문
             itemMap.put("category", item.getCategory());
             return itemMap;
         }).collect(Collectors.toList());
-        response.put("ordersItems", items);return response;}//[19]
+        response.put("ordersItems", items);return response;}//[19][25][26][27]
 
     public Orders changeOrders(Long ordersID, OrdersRegister ordersRegister){
         Orders saved= ordersRepository.findById(ordersID)
@@ -56,4 +56,4 @@ public class OrdersService {//주문
         saved.ordersChange(ordersRegister);return saved;}//[4]
 
     public void deleteOrders(Long ordersID){
-        ordersRepository.deleteByOrdersNumber(ordersID);}}
+        ordersRepository.deleteByOrdersNumber(ordersID);}}//[3][5]
