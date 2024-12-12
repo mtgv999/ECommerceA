@@ -29,6 +29,11 @@ public class OrdersController {//주문
         if(orders!=null){return ResponseEntity.ok(orders);
         }else{return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);}}//[20]~[24]
 
+    /* @GetMapping("/{ordersNumber}")//주문번호을 통해 주문한 소비자와 주문 내용 찾기
+    public ResponseEntity<?>getOrdersDetails(@PathVariable Long ordersNumber){
+        Map<String,Object> ordersDetails = new HashMap<>();
+        return ResponseEntity.ok(ordersDetails);}//[19]~[27] */
+
     @GetMapping("/{ordersNumber}")//주문번호을 통해 주문한 소비자와 주문 내용 찾기
     public ResponseEntity<?>getOrdersDetails(@PathVariable Long ordersNumber){
         Map<String,Object> ordersDetails = new HashMap<>();

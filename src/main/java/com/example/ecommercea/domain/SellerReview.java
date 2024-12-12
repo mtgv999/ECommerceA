@@ -18,14 +18,14 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 public class SellerReview extends BaseEntity{@Id//판매자
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long ReviewNumber2;//소비자 리뷰 번호
+    private Long sellerReviewNumber;//소비자 리뷰 번호
     private Category2 category2;//카테고리
     private Long sellerID;//판매자 ID
     private Long consumerID;//소비자 ID
 
     @NotNull(message = "제목 작성 필수")
     @Size(min=3)
-    private String title2;//제목 [29]
+    private String title2;//판매자 리뷰 제목 [29]
 
     @Min(value = 0, message = "최소 0")
     @Max(value = 10, message = "최대 10")
@@ -36,7 +36,7 @@ public class SellerReview extends BaseEntity{@Id//판매자
     private String review2;//리뷰 내용
     private String reReview2;//리뷰에 대한 댓글
 
-        private void sellerReviewChange(SellerReviewRegister sellerReviewRegister){
+        public void sellerReviewChange(SellerReviewRegister sellerReviewRegister){
             this.category2=sellerReviewRegister.getCategory2();
             this.sellerID=sellerReviewRegister.getSellerID();
             this.consumerID=sellerReviewRegister.getSellerID();

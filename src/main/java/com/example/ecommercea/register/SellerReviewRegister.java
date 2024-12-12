@@ -1,6 +1,5 @@
 package com.example.ecommercea.register;
 import com.example.ecommercea.domain.Category2;
-
 import com.example.ecommercea.domain.SellerReview;
 import lombok.*;
 @Getter
@@ -27,4 +26,4 @@ public class SellerReviewRegister {//판매자 리뷰 생성
                 .title2(sellerReviewRegister.getTitle2())
                 .score2(sellerReviewRegister.getScore2())
                 .review2(sellerReviewRegister.getReview2())
-                .reReview2(sellerReviewRegister.getReReview2()).build();}}//[4][30][35]
+                .reReview2(sellerReviewRegister.getReReview2()).build();}}//[4][30][35][36][37]

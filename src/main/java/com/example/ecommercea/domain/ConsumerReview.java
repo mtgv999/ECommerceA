@@ -19,7 +19,7 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 public class ConsumerReview extends BaseEntity {@Id//소비자 리뷰
     @GeneratedValue(strategy = GenerationType.IDENTITY)
 
-    private Long ConsumerReviewNumber;//소비자 리뷰 번호
+    private Long consumerReviewNumber;//소비자 리뷰 번호
     private Category category;//카테고리
     private Long consumerID;//소비자 ID
 
@@ -29,7 +29,7 @@ public class ConsumerReview extends BaseEntity {@Id//소비자 리뷰
 
     @NotNull(message = "제목 작성 필수")
     @Size(min=3)
-    private String title;//제목 [29]
+    private String title;//소비자 리뷰 제목 [29]
 
     @Min(value = 0, message = "최소 0")
     @Max(value = 10, message = "최대 10")
