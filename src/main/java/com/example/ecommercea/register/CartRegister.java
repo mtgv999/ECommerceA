@@ -9,6 +9,7 @@ import lombok.*;
 @AllArgsConstructor
 
 public class CartRegister {//장바구니 등록
+    private Long cartID;//장바구니 ID [40]
     private String cartName;//장바구니 이름
     private String productName;//상품 이름
 

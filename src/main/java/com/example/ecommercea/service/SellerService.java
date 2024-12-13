@@ -17,7 +17,7 @@ import java.util.Optional;
 @RequiredArgsConstructor
 public class SellerService {//판매자
     private final SellerRepository sellerRepository;
-    public Seller createSeller(SellerRegister sellerRegister){
+    public Seller createSeller(SellerRegister sellerRegister){//판매자 계정 생성
         if(sellerRepository.existsBySellerName(sellerRegister.getSellerName())){
             throw new DuplicateNameException("소비자 이름 이미 있음");}
         return sellerRepository.save(SellerRegister.sellerForm(sellerRegister));}
@@ -38,10 +38,10 @@ public class SellerService {//판매자
         //소비자 ID로 중복된 계정 찾기
         return sellerRepository.findById(sellerID);}
 
-    public Seller getSeller(Long sellerID){
+    public Seller getSeller(Long sellerID){//판매자 정보 가져옴
         return sellerRepository.findById(sellerID).orElse(null);}
 
-    public Seller changeSeller(Long sellerID, SellerRegister sellerRegister){
+    public Seller changeSeller(Long sellerID, SellerRegister sellerRegister){//판매자 정보 수정
         Seller saved= sellerRepository.findById(sellerID)
                 .orElseThrow(()->new RuntimeException("판매자 없음"));
 

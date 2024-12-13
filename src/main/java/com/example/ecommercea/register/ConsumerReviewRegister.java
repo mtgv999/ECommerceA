@@ -9,6 +9,7 @@ import lombok.*;
 @NoArgsConstructor
 
 public class ConsumerReviewRegister {//소비자 리뷰 생성
+    private Long ConsumerReviewNumber;//소비자 리뷰 번호 [40]
     private Category category;//카테고리
     private Long consumerID;//소비자 ID
 

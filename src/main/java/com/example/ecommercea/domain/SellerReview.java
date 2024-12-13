@@ -19,22 +19,22 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 public class SellerReview extends BaseEntity{@Id//판매자
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long sellerReviewNumber;//소비자 리뷰 번호
-    private Category2 category2;//카테고리
+    private Category2 category2;//카테고리2
     private Long sellerID;//판매자 ID
     private Long consumerID;//소비자 ID
 
     @NotNull(message = "제목 작성 필수")
     @Size(min=3)
-    private String title2;//판매자 리뷰 제목 [29]
+    private String title2;//판매자 리뷰 제목2 [29]
 
     @Min(value = 0, message = "최소 0")
     @Max(value = 10, message = "최대 10")
-    private int score2;//점수(평점)
+    private int score2;//점수(평점)2
 
     @NotNull(message = "내용 작성 필수")
     @Size(min=3)
-    private String review2;//리뷰 내용
-    private String reReview2;//리뷰에 대한 댓글
+    private String review2;//리뷰 내용2
+    private String reReview2;//리뷰에 대한 댓글2
 
         public void sellerReviewChange(SellerReviewRegister sellerReviewRegister){
             this.category2=sellerReviewRegister.getCategory2();

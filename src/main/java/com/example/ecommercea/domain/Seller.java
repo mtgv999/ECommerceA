@@ -26,13 +26,15 @@ private Long sellerID;//판매자 아이디
     @Size(min=8)
     private String sellerPW;//판매자 비밀 번호
 
-    private Long sellerAccountNumber;//판매자 계좌 번호
-    private Long sellerPhoneNumber;//판매자 휴대폰 번호
+    private String sellerAccountNumber;//판매자 계좌 번호
+    private String sellerPhoneNumber;//판매자 휴대폰 번호
     private String sellerReview;//판매자 리뷰
+    private String companyName;//회사 이름
 
     public void sellerChange(SellerRegister sellerRegister){//[4]
         this.sellerName=sellerRegister.getSellerName();
         this.sellerPW=sellerRegister.getSellerPW();
         this.sellerAccountNumber=sellerRegister.getSellerAccountNumber();
         this.sellerPhoneNumber=sellerRegister.getSellerPhoneNumber();
-        this.sellerReview=sellerRegister.getSellerReview();}}//[3]
+        this.sellerReview=sellerRegister.getSellerReview();
+        this.companyName=sellerRegister.getCompanyName();}}//[3]

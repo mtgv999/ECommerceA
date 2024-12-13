@@ -26,8 +26,8 @@ public class Consumer extends BaseEntity{@Id//소비자
     @Size(min=8)
     private String consumerPW;//소비자 비밀 번호
 
-    private Long consumerAccountNumber;//소비자 계좌 번호
-    private Long consumerPhoneNumber;//소비자 휴대폰 번호
+    private String consumerAccountNumber;//소비자 계좌 번호
+    private String consumerPhoneNumber;//소비자 휴대폰 번호
     private String consumerReview;//소비자 리뷰
 
     public void consumerChange(ConsumerRegister consumerRegister){//[4]

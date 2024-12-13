@@ -26,7 +26,7 @@ private Long productID;//상품 ID
 
     private String category;//상품 분류
     private String information;//상품 정보
-    private Long productNumber;//상품 번호
+    private String productNumber;//상품 번호
     private int stock;//상품(재고) 계수
 
     public void productChange(ProductRegister productRegister){//[4]

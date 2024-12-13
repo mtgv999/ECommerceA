@@ -19,7 +19,7 @@ import java.util.Optional;
 public class SellerController {//판매자
     private final SellerService sellerService;
 
-        @PostMapping("/create")//판매자 회원가입
+        @PostMapping("/create")//판매자 회원가입(같은 이름 있으면 만들 수 없음.)
         public ResponseEntity<?> createSeller(@RequestBody SellerRegister sellerRegister){
             try {Seller seller= sellerService.createSeller(sellerRegister);
                 return ResponseEntity.status(HttpStatus.CREATED).body(seller);
@@ -57,7 +57,7 @@ public class SellerController {//판매자
             if(seller!=null){return ResponseEntity.ok(seller);
             }else{return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);}}
 
-            @PutMapping("/change/{sellerID}")//판매자 정보 수정
+            @PutMapping("/change/{sellerID}")//판매자 정보 수정(같은 이름 있으면 만들 수 없음.)
             public ResponseEntity<?> changeSeller(@PathVariable Long sellerID,
                                      @RequestBody SellerRegister sellerRegister){
 
@@ -67,10 +67,10 @@ public class SellerController {//판매자
                 return ResponseEntity.status(HttpStatus.CONFLICT).body(e.getMessage());
             }catch (Exception e){
                 return ResponseEntity.status(HttpStatus.BAD_REQUEST).body
-                        ("잘못된 요청"+e.getMessage());}}//[4][31][32][33][34]
+                        ("잘못된 요청 -"+e.getMessage());}}//[4][31][32][33][34]
 
-        @DeleteMapping("/delete/{sellerID}")
-        //판매자 계정을 삭제하려고 할 때, 고객 ID, PW를 확인한 후에 삭제. http에서 2개의 sellerID 값 맞춰주기.
+        @DeleteMapping("/delete/{sellerID}")//판매자 계정을 삭제하려고 할 때,
+        // 고객 ID, PW를 확인한 후에 삭제. http에서 2개의 sellerID 값 맞춰주기.
         public ResponseEntity<String> deleteSeller(@PathVariable Long sellerID,
         @RequestBody SellerDeleteRequest sellerDeleteRequest){
 

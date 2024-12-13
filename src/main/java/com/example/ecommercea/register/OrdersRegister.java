@@ -14,6 +14,7 @@ import java.util.List;
 @AllArgsConstructor
 
 public class OrdersRegister {//주문 등록
+    private Long ordersNumber;//주문 번호 [39][40]
     private String ordersName;//주문 이름
     private Long consumerID;//고객 ID
     private Consumer consumer;//고객

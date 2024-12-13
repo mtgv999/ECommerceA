@@ -18,7 +18,7 @@ import java.util.Optional;
 public class ConsumerController {//소비자
     private final ConsumerService consumerService;
 
-    @PostMapping("/create")//소비자 회원가입
+    @PostMapping("/create")//소비자 회원가입(같은 이름 있으면 만들 수 없음.)
         public ResponseEntity<?> createConsumer(@RequestBody ConsumerRegister consumerRegister){
             try {Consumer consumer=consumerService.createConsumer(consumerRegister);
                 return ResponseEntity.status(HttpStatus.CREATED).body(consumer);
@@ -56,7 +56,7 @@ public class ConsumerController {//소비자
             if(consumer!=null){return ResponseEntity.ok(consumer);
         }else{return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);}}
 
-    @PutMapping("/change/{consumerID}")//소비자 정보 수정
+    @PutMapping("/change/{consumerID}")//소비자 정보 수정(같은 이름 있으면 만들 수 없음.)
     public ResponseEntity<?>changeConsumer(@PathVariable Long consumerID,
     @RequestBody ConsumerRegister consumerRegister){
 
@@ -66,10 +66,10 @@ public class ConsumerController {//소비자
             return ResponseEntity.status(HttpStatus.CONFLICT).body(e.getMessage());
         }catch (Exception e){
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body
-                    ("잘못된 요청"+e.getMessage());}}//[4][31][32][33][34]
+                    ("잘못된 요청 -"+e.getMessage());}}//[4][31][32][33][34]
 
-            @DeleteMapping("/delete/{consumerID}")
-            //소비자 계정을 삭제하려고 할 때, 고객 ID, PW를 확인한 후에 삭제. http에서 2개의 sellerID 값 맞춰주기.
+            @DeleteMapping("/delete/{consumerID}")//소비자 계정을 삭제하려고 할 때,
+            // 고객 ID, PW를 확인한 후에 삭제. http 에서 2개의 sellerID 값 맞춰주기.
             public ResponseEntity<String> deleteConsumer(@PathVariable Long consumerID,
             @RequestBody ConsumerDeleteRequest consumerDeleteRequest){
 
