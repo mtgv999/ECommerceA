@@ -20,7 +20,7 @@ public class ConsumerReview extends BaseEntity {@Id//소비자 리뷰
     @GeneratedValue(strategy = GenerationType.IDENTITY)
 
     private Long consumerReviewNumber;//소비자 리뷰 번호
-    private Category category;//카테고리
+    private Category category;//카테고리: 필수
     private Long consumerID;//소비자 ID
 
     private Long productID;//상품 ID

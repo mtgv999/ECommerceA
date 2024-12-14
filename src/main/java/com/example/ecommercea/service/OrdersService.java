@@ -3,18 +3,14 @@ import com.example.ecommercea.DuplicateNameException;
 import com.example.ecommercea.domain.Orders;
 import com.example.ecommercea.domain.OrdersItem;
 import com.example.ecommercea.register.OrdersRegister;
-//import com.example.ecommercea.repository.OrdersItemRepository;
+
 import com.example.ecommercea.repository.OrdersItemRepository;
 import com.example.ecommercea.repository.OrdersRepository;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
-import java.util.stream.Collectors;
 
 @Service
 @Transactional

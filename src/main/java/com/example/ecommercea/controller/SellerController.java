@@ -4,13 +4,13 @@ import com.example.ecommercea.domain.Seller;
 import com.example.ecommercea.register.SellerRegister;
 import com.example.ecommercea.request.SellerDeleteRequest;
 import com.example.ecommercea.request.SellerLoginRequest;
+
 import com.example.ecommercea.service.SellerService;
 import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.Optional;
 
 @RestController
@@ -42,7 +42,7 @@ public class SellerController {//판매자
         public ResponseEntity<String> logoutSeller(HttpSession session) {//세션 무효화
             session.invalidate();return ResponseEntity.ok("로그아웃 성공");}
 
-        @GetMapping("/profile")//로그인된 판매자 프로필 정보 가져옴
+        @GetMapping("/profile")//로그인된 판매자 프로필 정보 가져옴(가장 최근에 로그인한 판매자만)
         public ResponseEntity<Seller> getProfile(HttpSession session){
             Long sellerID=(Long)session.getAttribute("sellerID");
 
@@ -51,7 +51,8 @@ public class SellerController {//판매자
             return seller.map(ResponseEntity::ok).orElseGet(()
                     ->ResponseEntity.notFound().build());}
 
-        @GetMapping("/get/{sellerID}")//판매자 정보 가져옴
+        @GetMapping("/get/{sellerID}")//판매자 정보 가져옴(ID가 없으면 서버 오류,
+        // ID는 있지만 PW 오류시 "로그인 실패"가 뜸)
         public ResponseEntity<Seller>getSeller(@PathVariable Long sellerID){
             Seller seller= sellerService.getSeller(sellerID);
             if(seller!=null){return ResponseEntity.ok(seller);
@@ -70,7 +71,7 @@ public class SellerController {//판매자
                         ("잘못된 요청 -"+e.getMessage());}}//[4][31][32][33][34]
 
         @DeleteMapping("/delete/{sellerID}")//판매자 계정을 삭제하려고 할 때,
-        // 고객 ID, PW를 확인한 후에 삭제. http에서 2개의 sellerID 값 맞춰주기.
+    // 고객 ID, PW를 확인한 후에 삭제. http에서 2개의 sellerID 값 맞춰주기.(DELETE 줄 기준으로 삭제)
         public ResponseEntity<String> deleteSeller(@PathVariable Long sellerID,
         @RequestBody SellerDeleteRequest sellerDeleteRequest){
 

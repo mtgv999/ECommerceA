@@ -9,8 +9,8 @@ import java.time.LocalDateTime;
 @Getter
 @MappedSuperclass
 @EntityListeners(value ={AuditingEntityListener.class})
-public class BaseEntity{
+public class BaseEntity{//추가
     @CreatedDate//만든 시간
     private LocalDateTime createdTime=LocalDateTime.now();
-    @LastModifiedDate//업데이트한 시간
+    @LastModifiedDate//업데이트한 시간(작동 안 됨. 만든 시간과 같음)
     private LocalDateTime updatedTime=LocalDateTime.now();}

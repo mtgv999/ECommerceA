@@ -16,7 +16,7 @@ import java.util.List;
 public class SellerReviewController {//판매자 리뷰
     private final SellerReviewService sellerReviewService;
 
-    @PostMapping("/create")//판매자 리뷰 생성(같은 이름 있으면 만들 수 없음.)
+    @PostMapping("/create")//판매자 리뷰 생성(같은 이름 있으면 만들 수 없음. 카테고리 필수)
     public ResponseEntity<?> createSellerReview(@RequestBody SellerReviewRegister sellerReviewRegister){
         try{SellerReview sellerReview= sellerReviewService.createSellerReview(sellerReviewRegister);
             return ResponseEntity.status(HttpStatus.CREATED).body(sellerReview);
@@ -33,7 +33,7 @@ public class SellerReviewController {//판매자 리뷰
             List<SellerReview> sellerReview=sellerReviewService.getAllSellerReviews();
             sellerReview.forEach(System.out::println);return sellerReview;}//[40]
 
-    @PutMapping("/change/{sellerReviewNumber}")//판매자 리뷰 수정(같은 이름 있으면 만들 수 없음.)
+    @PutMapping("/change/{sellerReviewNumber}")//판매자 리뷰 수정(같은 이름 있으면 만들 수 없음. 카테고리 필수)
     public ResponseEntity<?>changeSellerReview(@PathVariable Long sellerReviewNumber,
                                                @RequestBody SellerReviewRegister sellerReviewRegister){
 

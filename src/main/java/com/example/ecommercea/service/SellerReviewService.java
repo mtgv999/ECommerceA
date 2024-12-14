@@ -1,13 +1,11 @@
 package com.example.ecommercea.service;
 import com.example.ecommercea.DuplicateNameException;
-import com.example.ecommercea.domain.Seller;
 import com.example.ecommercea.domain.SellerReview;
 import com.example.ecommercea.register.SellerReviewRegister;
 import com.example.ecommercea.repository.SellerReviewRepository;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-
 import java.util.List;
 
 @Service
@@ -16,7 +14,7 @@ import java.util.List;
 public class SellerReviewService { //판매자 리뷰
     private final SellerReviewRepository sellerReviewRepository;
 
-    public SellerReview createSellerReview(SellerReviewRegister sellerReviewRegister){//판매자 리뷰 삭제
+    public SellerReview createSellerReview(SellerReviewRegister sellerReviewRegister){//판매자 리뷰 생성
         if(sellerReviewRepository.existsByTitle2(sellerReviewRegister.getTitle2())){
             throw new DuplicateNameException("소비자 이름 이미 있음");}
         return sellerReviewRepository.save(SellerReviewRegister.sellerReviewForm(sellerReviewRegister));}

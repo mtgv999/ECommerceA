@@ -4,6 +4,7 @@ import com.example.ecommercea.domain.Consumer;
 import com.example.ecommercea.register.ConsumerRegister;
 import com.example.ecommercea.request.ConsumerDeleteRequest;
 import com.example.ecommercea.request.ConsumerLoginRequest;
+
 import com.example.ecommercea.service.ConsumerService;
 import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
@@ -50,7 +51,8 @@ public class ConsumerController {//소비자
         return consumer.map(ResponseEntity::ok).orElseGet(()
         ->ResponseEntity.notFound().build());}
 
-        @GetMapping("/get/{consumerID}")//소비자 정보 가져옴
+        @GetMapping("/get/{consumerID}")//소비자 정보 가져옴(ID가 없으면 서버 오류,
+        // ID는 있지만 PW 오류시 "로그인 실패"가 뜸)
         public ResponseEntity<Consumer>getConsumer(@PathVariable Long consumerID){
             Consumer consumer=consumerService.getConsumer(consumerID);
             if(consumer!=null){return ResponseEntity.ok(consumer);
@@ -69,7 +71,7 @@ public class ConsumerController {//소비자
                     ("잘못된 요청 -"+e.getMessage());}}//[4][31][32][33][34]
 
             @DeleteMapping("/delete/{consumerID}")//소비자 계정을 삭제하려고 할 때,
-            // 고객 ID, PW를 확인한 후에 삭제. http 에서 2개의 sellerID 값 맞춰주기.
+        //소비자 ID, PW를 확인한 후에 삭제. http 에서 2개의 ConsumerID 값 맞춰주기.(DELETE 줄 기준으로 삭제)
             public ResponseEntity<String> deleteConsumer(@PathVariable Long consumerID,
             @RequestBody ConsumerDeleteRequest consumerDeleteRequest){
 

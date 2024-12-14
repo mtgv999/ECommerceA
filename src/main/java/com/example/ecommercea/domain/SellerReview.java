@@ -19,7 +19,7 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 public class SellerReview extends BaseEntity{@Id//판매자
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long sellerReviewNumber;//소비자 리뷰 번호
-    private Category2 category2;//카테고리2
+    private Category2 category2;//카테고리2: 필수
     private Long sellerID;//판매자 ID
     private Long consumerID;//소비자 ID
 

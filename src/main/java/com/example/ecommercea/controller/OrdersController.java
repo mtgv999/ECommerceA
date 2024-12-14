@@ -35,6 +35,7 @@ public class OrdersController {//주문
     @GetMapping("/consumer/{consumerID}")//소비자 계정으로 누가 어떤 주문을 했고,
     // 주문 내 어떤 물품을 주문했는지 주문 정보를 가져옴(http 요청시 주문 테이블의 CustomerID와
     //주문아이템 테이블의 CustomerID를 맞추기 바람. 주문아이템 테이블의 소비자 ID로 정보를 가져옴)
+
     public ResponseEntity<List<OrdersRegister>> getOrdersByConsumerID(@PathVariable Long consumerID){
         List<OrdersRegister> ordersRegisterList=
                 ordersService.getOrdersWithItemsByConsumer(consumerID);

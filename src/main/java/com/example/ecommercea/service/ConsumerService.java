@@ -40,15 +40,18 @@ public class ConsumerService {//소비자
     public Consumer getConsumer(Long consumerID){//소비자 정보 가져옴
         return consumerRepository.findById(consumerID).orElse(null);}
 
-    public Consumer changeConsumer(Long consumerID, ConsumerRegister consumerRegister){//소비자 정보 수정
+    public Consumer changeConsumer(Long consumerID,
+        ConsumerRegister consumerRegister){//소비자 정보 수정
         Consumer saved=consumerRepository.findById(consumerID)
                 .orElseThrow(()->new RuntimeException("소비자 없음"));
 
         if(consumerRepository.existsByConsumerName(consumerRegister.getConsumerName())){
             throw new DuplicateNameException("소비자 이미 있음");}
-        saved.consumerChange(consumerRegister);return consumerRepository.save(saved);}//[4][31][32][33][34]
+        saved.consumerChange(consumerRegister);
+        return consumerRepository.save(saved);}//[4][31][32][33][34]
 
-    public void deleteConsumer(Long consumerID, ConsumerDeleteRequest consumerDeleteRequest){//소비자 계정 삭제
+    public void deleteConsumer(Long consumerID,
+        ConsumerDeleteRequest consumerDeleteRequest){//소비자 계정 삭제
         Consumer consumer=consumerRepository.findById(consumerID)
                 .orElseThrow(()->new RuntimeException("소비자 없음"));
 

@@ -10,7 +10,7 @@ import lombok.*;
 
 public class SellerReviewRegister {//판매자 리뷰 생성
     private Long SellerReviewNumber;//판매자 주문 번호 [40]
-    private Category2 category2;//카테고리2
+    private Category2 category2;//카테고리2: 필수
     private Long sellerID;//판매자 ID
     private Long consumerID;//소비자 ID
 
