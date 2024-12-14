@@ -1,4 +1,5 @@
 package com.example.ecommercea.domain;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
@@ -26,4 +27,5 @@ public class OrdersItem extends BaseEntity{ @Id
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "orders_number")
+    @JsonIgnore//[41]~[46] 특히 [46]
     private Orders orders;}//[6]~[18]
