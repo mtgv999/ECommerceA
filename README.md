@@ -61,5 +61,5 @@ Spring Web, Spring Data JPA, H2 Database, Lombok, Spring Security, Validation [5
 Java, Spring, H2 Database [5]
 
 ### ERD
-[C:\Users\OWNER\Downloads\스크린샷 2024-12-15 오후 3.37.29 (1).png)]
+![](C:\Users\OWNER\Downloads\스크린샷 2024-12-15 오후 3.37.29.png)
 [5][47]~[51]
